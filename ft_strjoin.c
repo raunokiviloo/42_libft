@@ -9,5 +9,45 @@
 /*   Updated: 2022/10/07 10:02:44 by rkiviloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdlib.h>
 
+size_t	ft_strlen(const char *str)
+{
+	size_t	len;
 
+	len = 0;
+	while (*str++)
+		len++;
+	return (len);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*newstring;
+	char	*newstring_index;
+
+	if (!s1 || !s2)
+		return (NULL);
+	newstring = malloc(sizeof(*newstring)
+			* (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!newstring)
+		return (NULL);
+	newstring_index = newstring;
+	while (*s1)
+		*newstring_index++ = *s1++;
+	while (*s2)
+		*newstring_index++ = *s2++;
+	*newstring_index = '\0';
+	return (newstring);
+}
+
+//What if !s1 or !s2? Someone had just returned NULL. 
+/*#include <stdio.h>
+int main(int argc, char **argv)
+{
+	if (argc == 3)
+	{
+	printf("%s", ft_strjoin(argv[1], argv[2]));
+	}
+}
+*/
