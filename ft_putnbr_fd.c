@@ -10,4 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include "libft.h"
 
+void	ft_putnbr_fd(int n, int fd)
+{
+	char	*num;
+
+	if (fd < 0)
+		return ;
+	num = ft_itoa(n);
+	ft_putstr_fd(num, fd);
+}

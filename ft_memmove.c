@@ -9,26 +9,36 @@
 /*   Updated: 2022/10/07 10:02:44 by rkiviloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
+
 void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	int	i;	
+	unsigned int	i;
+	char			*dest;
+	char			*source;
 
-	if (dst == src || dst == NULL || src == NULL)
-		return (dst);
-	if (dst < src)
+	dest = (char *)dst;
+	source = (char *)src;
+	if (dest == source || dest == NULL || source == NULL)
+		return (dest);
+	if (dest < source)
 	{
 		i = 0;
 		while (i < n)
-			buf[i] = src[i++];
-		return (dst);
+		{
+			dest[i] = source[i];
+			i++;
+		}
+		return (dest);
 	}
 	i = n;
 	while (i > 0)
 	{
-		dst[i - 1] = buf[i - 1];
+		dest[i - 1] = source[i - 1];
 		i--;
 	}
-	return (dst);
+	return (dest);
 }
 /*Using temp array prevents data loss when src and dst memory is overlapping.
 Copy forward if dst < src, copy backwards if dst > src.*/
+

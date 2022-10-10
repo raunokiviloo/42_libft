@@ -9,6 +9,7 @@
 /*   Updated: 2022/10/07 10:02:45 by rkiviloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 char	*ft_strnstr(const char *haystack,
 const char *needle, size_t bytestocheck)
@@ -17,7 +18,7 @@ const char *needle, size_t bytestocheck)
 	const char	*potentialmatch;
 
 	if (!needle)
-		return (haystack);
+		return ((char *)haystack);
 	originalneedle = needle;
 	while (*haystack && bytestocheck-- > 0)
 	{
@@ -26,7 +27,7 @@ const char *needle, size_t bytestocheck)
 			potentialmatch = haystack;
 			while (*haystack++ == *needle++)
 				if (!needle)
-					return (potentialmatch);
+					return ((char *)potentialmatch);
 			needle = originalneedle;
 			haystack = potentialmatch;
 		}

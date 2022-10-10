@@ -9,13 +9,17 @@
 /*   Updated: 2022/10/07 10:02:44 by rkiviloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 void	*ft_memchr(const void *str, int c, size_t bytestocheck)
 {
-	while (*str && bytestocheck-- > 0)
+	char	*string;
+
+	string = (char *)str;
+	while (*string && bytestocheck-- > 0)
 	{
-		if (*str++ == c)
-			return (str - 1);
+		if (*string++ == c)
+			return (string - 1);
 	}
 	return (NULL);
 }

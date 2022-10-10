@@ -9,13 +9,14 @@
 /*   Updated: 2022/10/07 10:02:44 by rkiviloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 char	*ft_strchr(const char *str, int c)
 {
 	while (*str)
 	{
 		if (*str == c)
-			return (str);
+			return ((char *)str);
 		str++;
 	}
 	return (NULL);

@@ -9,13 +9,7 @@
 /*   Updated: 2022/10/07 10:02:43 by rkiviloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
-
-void	ft_bzero(void *target, size_t n);
-{
-	while (n--)
-		*target++ = '\0';
-}
+#include "libft.h"
 
 void	*ft_calloc(size_t nelem, size_t elsize)
 {

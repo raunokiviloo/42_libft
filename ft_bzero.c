@@ -9,9 +9,13 @@
 /*   Updated: 2022/10/07 10:02:43 by rkiviloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	ft_bzero(void *target, size_t n);
+void	ft_bzero(void *target, size_t n)
 {
+	char	*tgt;
+
+	tgt = (char *)target;
 	while (n--)
-		*target++ = '\0';
+		*tgt++ = '\0';
 }

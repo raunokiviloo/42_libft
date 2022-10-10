@@ -9,13 +9,17 @@
 /*   Updated: 2022/10/07 10:02:44 by rkiviloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	*memset(void *dest, int c, size_t count)
+void	*ft_memset(void *dest, int c, size_t count)
 {
-	int	i;
-	
+	size_t	i;
+	char	*dst;
+
+	dst = (char *)dest;
 	i = 0;
 	while (i < count)
-		dest[i++] = c;
-	return (dest);
+		dst[i++] = c;
+	return (dst);
 }
+//Probably need to typecast void * to char * here.

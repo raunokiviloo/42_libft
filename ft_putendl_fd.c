@@ -9,5 +9,13 @@
 /*   Updated: 2022/10/07 10:02:44 by rkiviloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-
+void	ft_putendl_fd(char *s, int fd)
+{
+	if (!*s || fd < 0)
+		return ;
+	while (*s)
+		write(fd, s++, 1);
+	write(fd, "\n", 1);
+}

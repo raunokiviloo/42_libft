@@ -9,13 +9,19 @@
 /*   Updated: 2022/10/07 10:02:44 by rkiviloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	if (dst == src || dst == NULL || src == NULL)
-		return (dst);
+	char	*dest;
+	char	*source;
+
+	dest = (char *)dst;
+	source = (char *)src;
+	if (dest == source || dest == NULL || source == NULL)
+		return (dest);
 	while (n--)
-		*dst++ = *src++;
-	return (dst);
+		*dest++ = *source++;
+	return (dest);
 }
 // Should not stop at \0. 
