@@ -11,29 +11,31 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	const char	*originaldst;
-	const char	*originalsrc;
-	size_t		dstlen;
-	size_t		srclen;
-	size_t		bytestowrite;
+	size_t	srclen;
+	size_t	dstlen;
+	size_t	i;
 
-	originaldst = dst;
-	originalsrc = src;
-	bytestowrite = dsize;
-	while (bytestowrite-- && *dst++)
-		;
-	dstlen = dst - originaldst;
-	bytestowrite = dsize - dstlen;
-	srclen = 0;
-	while (src[srclen])
-		srclen++;
-	if (!bytestowrite--)
-		return (dstlen + srclen);
-	while (*src)
-		if (bytestowrite--)
-			*dst++ = *src++;
-	*dst = '\0';
-	return (dstlen + (src - originalsrc));
+	if (!dst || !src)
+		return (0);
+	srclen = ft_strlen(src);
+	dstlen = ft_strlen(dst);
+	i = dstlen;
+	if (size <= dstlen)
+		return (size + srclen);
+	while (*src && i + 1 < size)
+	{
+		dst[i] = *src;
+		i++;
+		src++;
+	}
+	dst[i] = '\0';
+	return (srclen + dstlen);
 }
+/*Returns len(src) + len(dst) by default.
+Returns len(src) + size if size <= len(dst)
+Size == total length of the destination buffer. 
+We set i to dstlen -> i.e. '\0'
+Need to overwrite '\0' with src[0]. -> Start from dst[i].
+Why i + 1?*/

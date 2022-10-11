@@ -15,9 +15,12 @@ char	*ft_strchr(const char *str, int c)
 {
 	while (*str)
 	{
-		if (*str == c)
+		if (*str == (unsigned char)c)
 			return ((char *)str);
 		str++;
 	}
+	if (c == 0)
+		return ((char *)str);
 	return (NULL);
 }
+//Need to find the null terminator as well! 

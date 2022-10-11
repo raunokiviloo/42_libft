@@ -15,12 +15,10 @@ void	*ft_calloc(size_t nelem, size_t elsize)
 {
 	void	*arr;
 
-	if (nelem == 0 || elsize == 0)
-		return (NULL);
 	arr = malloc(nelem * elsize);
 	if (!arr)
 		return (NULL);
-	ft_bzero(arr, nelem);
+	ft_bzero(arr, nelem * elsize);
 	return (arr);
 }
 //Need to initialize to 0.

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+//#include <stdio.h>
+#include "libft.h"
 
 static unsigned int	getwordcount(char const *str, char delimiter)
 {
@@ -32,7 +32,7 @@ static unsigned int	getwordcount(char const *str, char delimiter)
 	return (count);
 }
 
-void	freeall(char **target, int arr_index)
+static void	freeall(char **target, int arr_index)
 {
 	while (arr_index >= 0)
 		free(target[arr_index--]);
@@ -65,7 +65,7 @@ static int	alloc_toks(char const *str, char delimiter, char **target,
 	return (1);
 }
 
-void	write_toks(char const *str, char delimiter,
+static void	write_toks(char const *str, char delimiter,
 		char **target, unsigned int wordcount)
 {
 	int				arr_index;
@@ -94,9 +94,9 @@ char	**ft_split(char const *s, char c)
 	char			**tokens;
 	unsigned int	wordcount;
 
-	wordcount = getwordcount(s, c);
-	if (!s || !wordcount)
+	if (!s)
 		return (NULL);
+	wordcount = getwordcount(s, c);
 	tokens = malloc(sizeof(*tokens) * (wordcount + 1));
 	if (!tokens)
 		return (NULL);
@@ -135,8 +135,8 @@ char	**ft_split(char const *s, char c)
 		printf("%s, ", *output++);
 	printf("\n-----------------------\n");
 	
-			test1 = "          43   1";
-	delimiter = ' ';
+			test1 = 0;
+	delimiter = '_';
 	printf("String: %s\n", test1);
 	printf("Delimiter: %c\n", delimiter);
 	printf("Substrings: ");

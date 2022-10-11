@@ -41,4 +41,3 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 }
 /*Using temp array prevents data loss when src and dst memory is overlapping.
 Copy forward if dst < src, copy backwards if dst > src.*/
-

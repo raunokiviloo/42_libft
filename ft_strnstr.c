@@ -14,24 +14,19 @@
 char	*ft_strnstr(const char *haystack,
 const char *needle, size_t bytestocheck)
 {
-	const char	*originalneedle;
-	const char	*potentialmatch;
-
-	if (!needle)
+	if (!needle || *needle == '\0' || needle == haystack)
 		return ((char *)haystack);
-	originalneedle = needle;
-	while (*haystack && bytestocheck-- > 0)
+	while (*haystack && bytestocheck)
 	{
 		if (*haystack == *needle)
 		{	
-			potentialmatch = haystack;
-			while (*haystack++ == *needle++)
-				if (!needle)
-					return ((char *)potentialmatch);
-			needle = originalneedle;
-			haystack = potentialmatch;
+			if (ft_strlen(needle) > bytestocheck)
+				return (NULL);
+			if (!ft_strncmp(haystack, needle, (size_t)ft_strlen(needle)))
+				return ((char *)haystack);
 		}
 		haystack++;
+		bytestocheck--;
 	}
 	return (NULL);
 }

@@ -19,7 +19,14 @@ char	*ft_strrchr(const char *str, int c)
 	string = (char *)str;
 	last_c = NULL;
 	while (*string)
-		if (*string == c)
-			last_c = string++;
+	{
+		if (*string == (unsigned char)c)
+			last_c = string;
+		string++;
+	}
+	if (c == 0)
+		last_c = string;
 	return (last_c);
 }
+//Handle c == 0
+//Cast int c as unsigned char. 

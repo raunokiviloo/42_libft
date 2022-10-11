@@ -13,13 +13,14 @@
 
 void	*ft_memchr(const void *str, int c, size_t bytestocheck)
 {
-	char	*string;
+	unsigned char	*string;
+	unsigned char	character;
 
-	string = (char *)str;
-	while (*string && bytestocheck-- > 0)
-	{
-		if (*string++ == c)
-			return (string - 1);
-	}
+	string = (unsigned char *)str;
+	character = (unsigned char)c;
+	while (bytestocheck-- > 0)
+		if (*string++ == character)
+			return ((void *)(string - 1));
 	return (NULL);
 }
+// Had error where I returned 0 if !str. 
