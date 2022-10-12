@@ -9,7 +9,7 @@
 /*   Updated: 2022/10/07 10:02:45 by rkiviloo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+#include "libft.h"
 
 static int	is_set(char c, char const *set)
 {
@@ -19,14 +19,15 @@ static int	is_set(char c, char const *set)
 	return (0);
 }
 
-static size_t	ft_strlen(const char *str)
+static char	*blank_arr(void)
 {
-	size_t	len;
+	char	*blank;
 
-	len = 0;
-	while (*str++)
-		len++;
-	return (len);
+	blank = malloc(sizeof(*blank));
+	if (!blank)
+		return (NULL);
+	blank[0] = '\0';
+	return (blank);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
@@ -36,10 +37,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int			trimmedlen;
 	char		*trimmed_index;
 
-	if (!s1 || !set)
+	if (!s1)
 		return (NULL);
+	if (!set)
+		return (ft_strdup((char *)s1));
 	while (is_set(*s1, set))
 		s1++;
+	if (!*s1)
+		return (blank_arr());
 	backwrd_index = ft_strlen(s1) - 1;
 	while (is_set(s1[backwrd_index], set))
 		backwrd_index--;

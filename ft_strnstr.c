@@ -14,7 +14,9 @@
 char	*ft_strnstr(const char *haystack,
 const char *needle, size_t bytestocheck)
 {
-	if (!needle || *needle == '\0' || needle == haystack)
+	if (!haystack && bytestocheck == 0)
+		return (NULL);
+	if (*needle == '\0' || needle == haystack)
 		return ((char *)haystack);
 	while (*haystack && bytestocheck)
 	{

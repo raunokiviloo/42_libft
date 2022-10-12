@@ -44,5 +44,9 @@ fclean:	clean
 
 re:	fclean all
 	@echo "Recompiled $(NAME) successfully!"
+	
+so:
+	@gcc -nostartfiles -fPIC $(CFLAGS) -c $(FILES)
+	@gcc -nostartfiles -shared -o libft.so $(OBJ)
 
 .PHONY:	all, bonus, clean, fclean, re

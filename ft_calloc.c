@@ -14,7 +14,11 @@
 void	*ft_calloc(size_t nelem, size_t elsize)
 {
 	void	*arr;
+	size_t	max_size;
 
+	max_size = -1;
+	if (max_size / nelem <= elsize)
+		return (NULL);
 	arr = malloc(nelem * elsize);
 	if (!arr)
 		return (NULL);
@@ -22,3 +26,4 @@ void	*ft_calloc(size_t nelem, size_t elsize)
 	return (arr);
 }
 //Need to initialize to 0.
+//Need to check that product doesn't exceed MAX_SIZE.

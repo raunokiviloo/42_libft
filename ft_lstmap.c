@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkiviloo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,24 +11,25 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),
+void (*del)(void *))
 {
-	if (n == -2147483648)
+	t_list	*first_node;
+	t_list	*new_node;
+
+	if (!lst)
+		return (NULL);
+	first_node = NULL;
+	while (lst)
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd('8', fd);
-	}
-	else if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(-n, fd);
-	}
-	else
-	{
-		if (n > 9)
+		new_node = ft_lstnew(f(lst->content));
+		if (!new_node)
 		{
-			ft_putnbr_fd(n / 10, fd);
+			ft_lstclear(&first_node, del);
+			return (NULL);
 		}
-		ft_putchar_fd(48 + n % 10, fd);
+		ft_lstadd_back(&first_node, new_node);
+		lst = lst->next;
 	}
+	return (first_node);
 }

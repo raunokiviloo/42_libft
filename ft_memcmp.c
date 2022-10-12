@@ -18,7 +18,7 @@ int	ft_memcmp(const void *str1, const void *str2, size_t bytestocheck)
 
 	string1 = (unsigned char *)str1;
 	string2 = (unsigned char *)str2;
-	if (bytestocheck == 0 || str1 == NULL || str2 == NULL)
+	if (bytestocheck == 0)
 		return (0);
 	while (bytestocheck--)
 	{

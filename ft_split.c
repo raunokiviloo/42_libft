@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
+#include <stdio.h>
 #include "libft.h"
 
 static unsigned int	getwordcount(char const *str, char delimiter)
@@ -112,30 +112,47 @@ char	**ft_split(char const *s, char c)
 // If we have an array of strings **arr ->
 // sizeof(**arr) == 1 byte -> Size of a char
 // sizeof(*arr) == -> 4 / 8 bytes depending on environment. -> Size of a ptr. 
-/*int	main(void)
+/*void	ft_print_result(char const *s)
 {
+	int		len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	write(1, s, len);
+}
+
+int	main(void)
+{
+	int i = 0;
 	char **output;
-	char *test1 = "TEST";
-	char delimiter = 'x';
+	char *test1 = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.";
+	char delimiter = 'z';
 	printf("String: %s\n", test1);
 	printf("Delimiter: %c\n", delimiter);
 	printf("Substrings: ");
 	output = ft_split(test1, delimiter);
 	while (output != NULL && *output != NULL)
-		printf("%s, ", *output++);
+		printf("\n-> %s", *output++);
 	printf("\n-----------------------\n");
 	
-		test1 = "xxxxxxxxxxxTESTxTESTxxTESTx42xBBQxxxxxxx";
-	delimiter = 'x';
+	i = 0;
+	test1 = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse";
+	delimiter = ' ';
 	printf("String: %s\n", test1);
 	printf("Delimiter: %c\n", delimiter);
 	printf("Substrings: ");
 	output = ft_split(test1, delimiter);
-	while (output != NULL && *output != NULL)
-		printf("%s, ", *output++);
+	while (output[i])
+	{
+		ft_print_result(output[i]);
+		write(1, "\n", 1);
+		i++;
+	}	
 	printf("\n-----------------------\n");
 	
-			test1 = 0;
+	i = 0;
+	test1 = 0;
 	delimiter = '_';
 	printf("String: %s\n", test1);
 	printf("Delimiter: %c\n", delimiter);
@@ -145,6 +162,7 @@ char	**ft_split(char const *s, char c)
 		printf("%s, ", *output++);
 	printf("\n-----------------------\n");
 	
+	i = 0;
 	test1 = "ThereIsNoDelimiter";
 	delimiter = ' ';
 	printf("String: %s\n", test1);
@@ -155,6 +173,7 @@ char	**ft_split(char const *s, char c)
 		printf("%s, ", *output++);
 	printf("\n-----------------------\n");
 	
+	i = 0;
 	test1 = "xxxxxxxxxxxxxxx";
 	delimiter = 'x';
 	printf("String: %s\n", test1);
@@ -165,6 +184,7 @@ char	**ft_split(char const *s, char c)
 		printf("%s, ", *output++);
 	printf("\n-----------------------\n");
 	
+	i = 0;
 	test1 = "";
 	delimiter = 'y';
 	printf("String: %s\n", test1);
