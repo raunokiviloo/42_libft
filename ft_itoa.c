@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
-#include <stdio.h>
 /*
 - We want to know how many digits there are to allocate memory. 
 - Use int long to handle INT_MIN when working with abs values.  
